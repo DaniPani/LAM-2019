@@ -3,7 +3,6 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
-import tikzplotlib
 
 
 if os.path.exists('lam/data/tmp.fits'):
@@ -53,7 +52,7 @@ hdul.writeto('lam/data/tmp.fits')
 # BACKGROUND MEANS
 I_back_mean = np.mean(np.transpose(np.divide(I_back, np.transpose([np.max(I_back, axis=1)]))), axis=1)
 
-""" # PLOT 1
+# PLOT 1
 plt.figure(1)
 
 plt.subplot(4,1,1)
@@ -108,7 +107,7 @@ def update(val):
     f_U.set_ydata(U_I_max[int(index)])
     f_V.set_ydata(V_I_max[int(index)])
     fig.canvas.draw_idle()
-slider.on_changed(update)  """
+slider.on_changed(update) 
 
 # PLOT 3
 fig_1, ax_1 = plt.subplots()
@@ -129,12 +128,12 @@ plt.subplot(4,1,4)
 plt.plot(V_mean)
 plt.ylabel('Mean V/Imax')
 
-""" # PLOT 3
+# PLOT 3
 plt.figure(4)
 
-plt.plot(I_back_mean) """
+plt.plot(I_back_mean)
 
-""" # PLOT 4
+# PLOT 4
 fig_2, ax_2 = plt.subplots()
 
 plt.subplot(5,1,1)
@@ -155,8 +154,6 @@ plt.ylabel('V_mean')
 
 plt.subplot(5,1,5)
 plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), I_back_mean)
-plt.ylabel('I_background_mean') """
-
-#tikzplotlib.save('lam/tex/test.tex')
+plt.ylabel('I_background_mean')
 
 plt.show()
