@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 
 
-if os.path.exists('lam/data/tmp.fits'):
-    os.remove('lam/data/tmp.fits')
+if os.path.exists('data/tmp.fits'):
+    os.remove('data/tmp.fits')
 
-I_prob, Q_prob, U_prob, V_prob = np.array(fits.open('lam/data/5876_m1_red.fits')[0].data)
-I_back, Q_back, U_back, V_back = np.array(fits.open('lam/data/5876_m2_red.fits')[0].data)
+I_prob, Q_prob, U_prob, V_prob = np.array(fits.open('data/5876_m1_red.fits')[0].data)
+I_back, Q_back, U_back, V_back = np.array(fits.open('data/5876_m2_red.fits')[0].data)
 
 etas = []
 
