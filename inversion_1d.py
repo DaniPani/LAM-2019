@@ -6,12 +6,10 @@ import numpy as np
 # FITS TO 1D FILES
 stokes = np.array(fits.open('data/tmp.fits')[0].data)
 
-noise = np.std(stokes[1,0:15])
-
 tmp = hazel.tools.File_observation(mode='single')
 tmp.set_size(n_lambda=175, n_pixel=1)
 tmp.obs['stokes'] = np.array([np.transpose(stokes)])
-tmp.obs['sigma'] = noise*np.ones((175,4))
+tmp.obs['sigma'] =  np.array([np.std(stokes[0,0:15])*np.ones((175,1)),  np.std(stokes[1,0:15])*np.ones((175,1)),  np.std(stokes[2,0:15])*np.ones((175,1)), np.std(stokes[3,0:15])*np.ones((175,1))]).transpose()
 tmp.obs['los'] = np.array([[90,0,90]])
 tmp.obs['boundary'] = np.array([[[0,0,0,0]]])
 tmp.save('data/tmp')
