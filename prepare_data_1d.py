@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 
 
-if os.path.exists('data/tmp.fits'):
-    os.remove('data/tmp.fits')
+if os.path.exists('data/tmp.1d.fits'):
+    os.remove('data/tmp.1d.fits')
 
 I_prob, Q_prob, U_prob, V_prob = np.array(fits.open('data/5876_m1_red.fits')[0].data)
 I_back, Q_back, U_back, V_back = np.array(fits.open('data/5876_m2_red.fits')[0].data)
@@ -47,7 +47,7 @@ V_mean = np.mean(np.transpose(V_I_max[93:103]), axis=1)[600:775]
 # SAVE MEANS
 hdu = fits.PrimaryHDU(np.array([I_mean, Q_mean, U_mean, V_mean]))
 hdul = fits.HDUList([hdu])
-hdul.writeto('data/tmp.fits')
+hdul.writeto('data/tmp.1d.fits')
 
 # BACKGROUND MEANS
 I_back_mean = np.mean(np.transpose(np.divide(I_back, np.transpose([np.max(I_back, axis=1)]))), axis=1)

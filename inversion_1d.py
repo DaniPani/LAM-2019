@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 # FITS TO 1D FILES
-stokes = np.array(fits.open('data/tmp.fits')[0].data)
+stokes = np.array(fits.open('data/tmp.1d.fits')[0].data)
 
 tmp = hazel.tools.File_observation(mode='single')
 tmp.set_size(n_lambda=175, n_pixel=1)
