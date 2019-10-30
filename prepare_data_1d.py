@@ -47,7 +47,7 @@ V_mean = np.mean(np.transpose(V_I_max[93:103]), axis=1)[600:775]
 # SAVE MEANS
 hdu = fits.PrimaryHDU(np.array([I_mean, Q_mean, U_mean, V_mean]))
 hdul = fits.HDUList([hdu])
-hdul.writeto('lam/data/tmp.fits')
+hdul.writeto('data/tmp.fits')
 
 # BACKGROUND MEANS
 I_back_mean = np.mean(np.transpose(np.divide(I_back, np.transpose([np.max(I_back, axis=1)]))), axis=1)
@@ -59,7 +59,7 @@ plt.subplot(4,1,1)
 plt.title('Stokes I, Q, U, V')
 plt.xlabel("Pixels")
 plt.ylabel("Rows")
-plt.pcolormesh(I, cmap="gray", vmin=100)
+plt.pcolormesh(I, cmap="gray", vmin=650)
 
 plt.subplot(4,1,2)
 plt.ylabel("Rows")
@@ -67,11 +67,11 @@ plt.pcolormesh(Q, cmap="gray", vmin=3)
 
 plt.subplot(4,1,3)
 plt.ylabel("Rows")
-plt.pcolormesh(-U, cmap="gray", vmin=2)
+plt.pcolormesh(-U, cmap="gray")
 
 plt.subplot(4,1,4)
 plt.ylabel("Rows")
-plt.pcolormesh(V, cmap="gray", vmin=-1)
+plt.pcolormesh(V, cmap="gray")
 
 # PLOT 2
 index = 95 
@@ -137,23 +137,23 @@ plt.plot(I_back_mean)
 fig_2, ax_2 = plt.subplots()
 
 plt.subplot(5,1,1)
-plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), I_mean)
+plt.plot(np.arange(5874.918, 5876.397, 8.452433e-3), I_mean)
 plt.ylabel('I_mean')
 
 plt.subplot(5,1,2)
-plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), Q_mean)
+plt.plot(np.arange(5874.918, 5876.397, 8.452433e-3), Q_mean)
 plt.ylabel('Q_mean')
 
 plt.subplot(5,1,3)
-plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), U_mean)
+plt.plot(np.arange(5874.918, 5876.397, 8.452433e-3), U_mean)
 plt.ylabel('U_mean')
 
 plt.subplot(5,1,4)
-plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), V_mean)
+plt.plot(np.arange(5874.918, 5876.397, 8.452433e-3), V_mean)
 plt.ylabel('V_mean')
 
 plt.subplot(5,1,5)
-plt.plot(np.arange(5869.851, 5880.332, 8.452433e-3), I_back_mean)
+plt.plot(np.arange(5874.918, 5876.397, 8.452433e-3), I_back_mean[600:775])
 plt.ylabel('I_background_mean')
 
 plt.show()
