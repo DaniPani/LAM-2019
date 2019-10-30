@@ -67,7 +67,7 @@ plt.pcolormesh(Q, cmap="gray", vmin=3)
 
 plt.subplot(4,1,3)
 plt.ylabel("Rows")
-plt.pcolormesh(-U, cmap="gray")
+plt.pcolormesh(U, cmap="gray")
 
 plt.subplot(4,1,4)
 plt.ylabel("Rows")
