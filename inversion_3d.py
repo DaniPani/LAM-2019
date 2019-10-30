@@ -5,6 +5,7 @@ import numpy as np
 
 # FITS TO H5 FILES
 stokes = np.array(fits.open('data/5876_m1_20100316.fits')[0].data, dtype=np.float64)[:, 16:45, 300:550]
+stokes = np.divide(stokes, np.max(stokes[0]))
 
 n_lambda = 250
 n_pixel = 29
