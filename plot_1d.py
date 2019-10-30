@@ -4,9 +4,7 @@ import numpy as np
 from astropy.io import fits
 
 data = h5py.File('output/1d.h5')
-stokes = np.array(fits.open('data/tmp.fits')[0].data)
-
-chromosphere = data['ch1']
+stokes = np.array(fits.open('data/tmp.1d.fits')[0].data)
 
 fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(10,10))
 ax = ax.flatten()
