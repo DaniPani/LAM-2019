@@ -3,6 +3,8 @@ from astropy.io import fits
 import os
 import numpy as np
 
+# CMD wsl /usr/bin/python3 /mnt/c/Users/paner/Documents/LAM/daniel/inversion_1d.py
+
 # FITS TO 1D FILES
 stokes = np.array(fits.open('data/tmp.1d.fits')[0].data)
 
