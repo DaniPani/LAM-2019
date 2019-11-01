@@ -34,7 +34,7 @@ for i in range(n_pixel):
 tmp.obs['los'][:] = np.full((n_pixel, 3), [90,0,90])
 tmp.obs['boundary'][:] = np.full((n_pixel,n_lambda,4), [0,0,0,0])
 
-tmp.save('data/tmp')
+tmp.save('data/tmp.h5')
 
 # CHROMOSPHERE
 tmp = hazel.tools.File_chromosphere(mode='multi')
