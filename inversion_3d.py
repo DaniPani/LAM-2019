@@ -19,7 +19,7 @@ Q_means = np.mean(np.split(Q_I_max[6:54], n_pixel), axis=1)[:, 300:550]
 U_means = np.mean(np.split(U_I_max[6:54], n_pixel), axis=1)[:, 300:550]
 V_means = np.mean(np.split(V_I_max[6:54], n_pixel), axis=1)[:, 300:550]
 
-stokes = np.array(I_means, Q_means, U_means, V_means)
+stokes = np.array([I_means, Q_means, U_means, V_means])
 
 tmp = hazel.tools.File_observation(mode='multi')
 tmp.set_size(n_lambda=n_lambda, n_pixel=n_pixel)
