@@ -3,12 +3,23 @@ from astropy.io import fits
 import os
 import numpy as np
 
-# FITS TO H5 FILES
-stokes = np.array(fits.open('data/5876_m1_20100316.fits')[0].data, dtype=np.float64)[:, 47:57, 300:550]
-stokes = np.divide(stokes, np.max(stokes[0]))
-
 n_lambda = 250
-n_pixel = 10
+n_pixel = 4
+
+I, Q, U, V = np.array(fits.open('data/5876_m1_20100316.fits')[0].data)
+
+# FITS TO H5 FILES
+I_I_max = np.divide(I, np.transpose([np.max(I, axis=1)]))
+Q_I_max = np.divide(Q, np.transpose([np.max(I, axis=1)]))
+U_I_max = np.divide(U, np.transpose([np.max(I, axis=1)]))
+V_I_max = np.divide(V, np.transpose([np.max(I, axis=1)]))
+
+I_means = np.mean(np.split(I_I_max[6:54], n_pixel), axis=1)[:, 300:550]
+Q_means = np.mean(np.split(Q_I_max[6:54], n_pixel), axis=1)[:, 300:550]
+U_means = np.mean(np.split(U_I_max[6:54], n_pixel), axis=1)[:, 300:550]
+V_means = np.mean(np.split(V_I_max[6:54], n_pixel), axis=1)[:, 300:550]
+
+stokes = np.array(I_means, Q_means, U_means, V_means)
 
 tmp = hazel.tools.File_observation(mode='multi')
 tmp.set_size(n_lambda=n_lambda, n_pixel=n_pixel)
