@@ -4,11 +4,11 @@ import os
 import numpy as np
 
 # FITS TO H5 FILES
-stokes = np.array(fits.open('data/5876_m1_20100316.fits')[0].data, dtype=np.float64)[:, 16:45, 300:550]
+stokes = np.array(fits.open('data/5876_m1_20100316.fits')[0].data, dtype=np.float64)[:, 47:57, 300:550]
 stokes = np.divide(stokes, np.max(stokes[0]))
 
 n_lambda = 250
-n_pixel = 29
+n_pixel = 10
 
 tmp = hazel.tools.File_observation(mode='multi')
 tmp.set_size(n_lambda=n_lambda, n_pixel=n_pixel)
@@ -37,6 +37,6 @@ os.remove('data/tmp.mask')
 
 # WITHOUT RANDOMIZATION
 iterator = hazel.Iterator(use_mpi=False)
-mod = hazel.Model('configurations/3d.ini', working_mode='inversion')
+mod = hazel.Model('configurations/3d.ini', working_mode='inversion', verbose=3)
 iterator.use_model(model=mod)
 iterator.run_all_pixels()
